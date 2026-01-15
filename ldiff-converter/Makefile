@@ -3,7 +3,7 @@ APP_NAME = ldiff-converter.exe
 all: build
 
 build:
-	go build -o $(APP_NAME) ./
+	set GOOS=windows&& set GOARCH=amd64&& set CGO_ENABLED=0 && go build -buildvcs=false -trimpath -ldflags="-s -w" -o $(APP_NAME) ./
 
 run: build
 	./$(APP_NAME)
